@@ -30,7 +30,7 @@ class SplashViewModel(dataManager: DataManager, schedulerProvider: SchedulerProv
 
     private fun decideNextActivity() {
         if (dataManager.currentUserLoggedInMode == DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT.type) {
-            navigator?.openLoginActivity()
+         //   navigator?.openLoginActivity()
         } else {
             navigator?.openMainActivity()
         }

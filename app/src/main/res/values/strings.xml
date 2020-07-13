@@ -83,4 +83,14 @@
     <string name="empty_screen">We do not have anything\nhere right now.</string>
     <string name="please_retry">Please Retry</string>
     <string name="retry">Retry</string>
+
+    <!--splash screen-->
+    <string name="welcome">WELCOME</string>
+    <string name="discover">DISCOVER</string>
+    <string name="planning">PLANNING</string>
+
+    <string name="no_description"></string>
+    <string name="discover_description">Easy discovering new place and share it with your friends</string>
+    <string name="planning_description">Make your plan clearly to handle all the stuffs</string>
+
 </resources>

@@ -76,6 +76,11 @@ constructor(
         set(profilePicUrl) {
             mPreferencesHelper.currentUserProfilePicUrl = profilePicUrl
         }
+    override var isFirstTimeLogin: Boolean
+         get() = mPreferencesHelper.isFirstTimeLogin
+        set(isFirstTime) {
+            mPreferencesHelper.isFirstTimeLogin = isFirstTime
+        }
 
     override val openSourceApiCall: Single<OpenSourceResponse>
         get() = mApiHelper.openSourceApiCall

@@ -45,6 +45,12 @@ constructor(context: Context, @PreferenceInfo prefFileName: String) : Preference
         set(profilePicUrl) =
             mPrefs.edit().putString(PREF_KEY_CURRENT_USER_PROFILE_PIC_URL, profilePicUrl).apply()
 
+    override var isFirstTimeLogin: Boolean
+        get() = mPrefs.getBoolean(PREF_KEY_CHECK_FIRST_TIME_LOGIN, false)
+        set(isFirstTime) {
+            mPrefs.edit().putBoolean(PREF_KEY_CHECK_FIRST_TIME_LOGIN,isFirstTime).apply()
+        }
+
     init {
         mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
     }
@@ -66,5 +72,7 @@ constructor(context: Context, @PreferenceInfo prefFileName: String) : Preference
         private const val PREF_KEY_CURRENT_USER_PROFILE_PIC_URL = "PREF_KEY_CURRENT_USER_PROFILE_PIC_URL"
 
         private const val PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE"
+
+        private const val PREF_KEY_CHECK_FIRST_TIME_LOGIN = "PREF_KEY_CHECK_FIRST_TIME_LOGIN"
     }
 }

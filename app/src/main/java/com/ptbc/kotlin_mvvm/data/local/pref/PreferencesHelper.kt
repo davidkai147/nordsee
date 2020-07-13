@@ -16,5 +16,7 @@ interface PreferencesHelper {
 
     var currentUserProfilePicUrl: String?
 
+    var isFirstTimeLogin: Boolean
+
     fun setCurrentUserLoggedInMode(mode: DataManager.LoggedInMode)
 }

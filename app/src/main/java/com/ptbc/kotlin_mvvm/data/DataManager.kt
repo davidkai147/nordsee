@@ -28,7 +28,6 @@ interface DataManager : DbHelper, PreferencesHelper, ApiHelper {
     )
 
     enum class LoggedInMode(val type: Int) {
-
         LOGGED_IN_MODE_LOGGED_OUT(0),
         LOGGED_IN_MODE_GOOGLE(1),
         LOGGED_IN_MODE_FB(2),

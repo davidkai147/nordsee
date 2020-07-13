@@ -4,7 +4,6 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.widget.*
 import androidx.core.content.ContextCompat
@@ -25,23 +24,18 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
     @Inject
     lateinit var factory: ViewModelProviderFactory
 
-    lateinit var mSplashViewModel: SplashViewModel
-
+    private var onBoardItems: ArrayList<OnBoardItem> = ArrayList()
     private var dotsCount = 0
     lateinit var dots: Array<ImageView?>
 
-    lateinit var onboard_pager: ViewPager
+    lateinit var onboardPager: ViewPager
     lateinit var pager_indicator: LinearLayout
-    lateinit var btn_prev: TextView
-    lateinit var btn_next: TextView
-    lateinit var btn_start: Button
-
-    lateinit var sharedPreferences: SharedPreferences
-    var firstTime: Boolean = false
+    lateinit var btnPrev: TextView
+    lateinit var btnNext: TextView
+    lateinit var btnStart: Button
 
     lateinit var adapter: SplashAdapter
-
-    var onBoardItems: ArrayList<OnBoardItem> = ArrayList()
+    lateinit var mSplashViewModel: SplashViewModel
 
     override val bindingVariable: Int
         get() = BR.viewModel
@@ -67,11 +61,13 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
         finish()
     }
 
-    fun loadData() {
-        var header = arrayOf(R.string.tilte1, R.string.tilte2, R.string.tilte3)
-        var desc = arrayOf(R.string.desc1, R.string.desc2, R.string.desc3)
-        var image_background = intArrayOf(R.drawable.screen, R.drawable.screen_blur, R.drawable.screen_blur)
-        for (i in 0..image_background.size-1) {
+    private fun loadData() {
+        val header = arrayOf(R.string.welcome, R.string.discover, R.string.planning)
+        val desc = arrayOf(R.string.no_description, R.string.discover_description, R.string.planning_description)
+        val image_background = intArrayOf(R.drawable.screen, R.drawable.screen_blur, R.drawable.screen_blur)
+
+        val countItem = image_background.size-1
+        for (i in 0..countItem) {
             val item : OnBoardItem = OnBoardItem(0, "","")
             item.image_background = image_background[i]
             item.title = resources.getString(header[i])
@@ -80,8 +76,8 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
         }
     }
 
-    fun setUiPageViewController() {
-        dotsCount = adapter!!.getCount()
+    private fun setUiPageViewController() {
+        dotsCount = adapter.count
         dots = arrayOfNulls(dotsCount)
         for (i in 0 until dotsCount) {
             dots[i] = ImageView(this)
@@ -96,7 +92,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
                 LinearLayout.LayoutParams.WRAP_CONTENT
             )
             params.setMargins(6, 0, 6, 0)
-            pager_indicator!!.addView(dots[i], params)
+            pager_indicator.addView(dots[i], params)
         }
         dots[0]!!.setImageDrawable(
             ContextCompat.getDrawable(
@@ -110,10 +106,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
         super.onCreate(savedInstanceState)
         mSplashViewModel.navigator = this
 
-        sharedPreferences = getSharedPreferences("MyPreferences", Context.MODE_PRIVATE)
-        firstTime = sharedPreferences.getBoolean("firstTime",false)
-
-        if (firstTime){
+        if (mSplashViewModel.checkIsFirstTime()){
             openLoginActivity()
         }
 
@@ -121,20 +114,19 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
 
         var currentViewPager : Int
 
-        onboard_pager = findViewById(R.id.viewpager)
+        onboardPager = findViewById(R.id.viewpager)
         pager_indicator = findViewById(R.id.viewPagerCountDots)
-        btn_prev = findViewById(R.id.tv_previous)
-        btn_next = findViewById(R.id.tv_next)
-        btn_start = findViewById(R.id.btn_start)
+        btnPrev = findViewById(R.id.tv_previous)
+        btnNext = findViewById(R.id.tv_next)
+        btnStart = findViewById(R.id.btn_start)
 
         loadData()
 
         adapter = SplashAdapter(this, onBoardItems)
-        onboard_pager.adapter = adapter
-        onboard_pager.setCurrentItem(0)
+        onboardPager.adapter = adapter
+        onboardPager.setCurrentItem(0)
 
-
-        onboard_pager.addOnPageChangeListener(object : OnPageChangeListener {
+        onboardPager.addOnPageChangeListener(object : OnPageChangeListener {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
@@ -144,7 +136,6 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
 
             override fun onPageSelected(position: Int) {
                 currentViewPager = position
-                // Change the current position intimation
                 for (i in 0 until dotsCount) {
                     dots.get(i)!!.setImageDrawable(
                         ContextCompat.getDrawable(
@@ -164,36 +155,33 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
             override fun onPageScrollStateChanged(state: Int) {}
         })
 
-        btn_prev.setOnClickListener{
-            onboard_pager.setCurrentItem((onboard_pager.currentItem-1),true)
-            if (onboard_pager.currentItem<1){
+        btnPrev.setOnClickListener{
+            onboardPager.setCurrentItem((onboardPager.currentItem-1),true)
+            if (onboardPager.currentItem<1){
                 currentViewPager=0
-                btn_prev.visibility=View.INVISIBLE
+                btnPrev.visibility=View.INVISIBLE
 
             }
             else{
-                btn_next.visibility=View.VISIBLE
-                btn_start.visibility=View.INVISIBLE
+                btnNext.visibility=View.VISIBLE
+                btnStart.visibility=View.INVISIBLE
             }
         }
 
-        btn_next.setOnClickListener {
-            onboard_pager.setCurrentItem((onboard_pager.currentItem+1),true)
-            if (onboard_pager.currentItem>1){
+        btnNext.setOnClickListener {
+            onboardPager.setCurrentItem((onboardPager.currentItem+1),true)
+            if (onboardPager.currentItem>1){
                 currentViewPager=2
-                btn_next.visibility=View.INVISIBLE
-                btn_start.visibility=View.VISIBLE
+                btnNext.visibility=View.INVISIBLE
+                btnStart.visibility=View.VISIBLE
             }
             else{
-                btn_prev.visibility=View.VISIBLE
+                btnPrev.visibility=View.VISIBLE
             }
         }
 
-        btn_start.setOnClickListener {
-            firstTime = true
-            var editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.putBoolean("firstTime",firstTime)
-            editor.commit()
+        btnStart.setOnClickListener {
+            mSplashViewModel.setFirstTime(true)
             startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
             finish()
         }

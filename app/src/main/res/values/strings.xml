@@ -85,12 +85,12 @@
     <string name="retry">Retry</string>
 
     <!--splash screen-->
-    <string name="tilte1">WELCOME</string>
-    <string name="tilte2">DISCOVER</string>
-    <string name="tilte3">PLANNING</string>
+    <string name="welcome">WELCOME</string>
+    <string name="discover">DISCOVER</string>
+    <string name="planning">PLANNING</string>
 
-    <string name="desc1"></string>
-    <string name="desc2">Easy discovering new place and share it with your friends</string>
-    <string name="desc3">Make your plan clearly to handle all the stuffs</string>
+    <string name="no_description"></string>
+    <string name="discover_description">Easy discovering new place and share it with your friends</string>
+    <string name="planning_description">Make your plan clearly to handle all the stuffs</string>
 
 </resources>

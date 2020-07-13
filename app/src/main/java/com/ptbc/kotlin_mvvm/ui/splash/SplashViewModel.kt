@@ -1,5 +1,7 @@
 package com.ptbc.kotlin_mvvm.ui.splash
 
+import android.content.Context
+import android.content.SharedPreferences
 import com.ptbc.kotlin_mvvm.data.DataManager
 import com.ptbc.kotlin_mvvm.ui.base.BaseViewModel
 import com.ptbc.kotlin_mvvm.utils.AppLogger
@@ -48,5 +50,13 @@ class SplashViewModel(dataManager: DataManager, schedulerProvider: SchedulerProv
                         AppLogger.d(throwable, "SplashViewModel")
                     })
         )
+    }
+
+    fun checkIsFirstTime(): Boolean{
+     return dataManager.isFirstTimeLogin
+    }
+
+    fun setFirstTime(isFirstTime: Boolean){
+        dataManager.isFirstTimeLogin = isFirstTime
     }
 }

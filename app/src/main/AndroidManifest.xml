@@ -18,7 +18,7 @@
             tools:ignore="GoogleAppIndexingWarning"
             tools:targetApi="n">
         <activity android:name=".ui.splash.SplashActivity"
-            android:configChanges="orientation|screenSize"
+            android:configChanges="orientation"
             >
 
             <intent-filter>

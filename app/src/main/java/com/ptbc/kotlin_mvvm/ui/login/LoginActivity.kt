@@ -3,6 +3,7 @@ package com.ptbc.kotlin_mvvm.ui.login
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.widget.CheckBox
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProviders
 import com.ptbc.kotlin_mvvm.BR
@@ -18,6 +19,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), Logi
     @Inject
     lateinit var factory: ViewModelProviderFactory
     lateinit var mLoginViewModel: LoginViewModel
+    lateinit var chkRememberMe: CheckBox
     private var mActivityLoginBinding: ActivityLoginBinding? = null
 
     override val bindingVariable: Int
@@ -41,7 +43,13 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), Logi
         val password = mActivityLoginBinding!!.etPassword.getText().toString()
         if (mLoginViewModel.isEmailAndPasswordValid(email, password)) {
             hideKeyboard()
-            mLoginViewModel.login(email, password)
+            if (chkRememberMe.isChecked){
+                mLoginViewModel.rememberLogin(email, password)
+            }
+            else{
+                mLoginViewModel.forgetLogin(email,password)
+            }
+
         } else {
             Toast.makeText(this, getString(R.string.invalid_email_password), Toast.LENGTH_SHORT).show()
         }
@@ -57,10 +65,12 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), Logi
         super.onCreate(savedInstanceState)
         mActivityLoginBinding = viewDataBinding
         mLoginViewModel.navigator = this
+
+        chkRememberMe = findViewById(R.id.chkboxRememberMe)
+
     }
 
     companion object {
-
         fun newIntent(context: Context): Intent {
             return Intent(context, LoginActivity::class.java)
         }

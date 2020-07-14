@@ -21,7 +21,7 @@ class LoginViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvi
         return !TextUtils.isEmpty(password)
     }
 
-    fun login(email: String, password: String) {
+    fun rememberLogin(email: String, password: String) {
         setIsLoading(true)
         compositeDisposable.add(dataManager
             .doServerLoginApiCall(LoginRequest.ServerLoginRequest(email, password))
@@ -31,6 +31,34 @@ class LoginViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvi
                         response.accessToken,
                         response.userId,
                         DataManager.LoggedInMode.LOGGED_IN_MODE_SERVER,
+                        response.userName,
+                        response.userEmail,
+                        response.googleProfilePicUrl
+                    )
+            }
+            .subscribeOn(schedulerProvider.io())
+            .observeOn(schedulerProvider.ui())
+            .subscribe({ response ->
+                setIsLoading(false)
+                navigator?.openMainActivity()
+
+            }, { throwable ->
+                setIsLoading(false)
+                navigator?.handleError(throwable)
+            })
+        )
+    }
+
+    fun forgetLogin(email: String, password: String) {
+        setIsLoading(true)
+        compositeDisposable.add(dataManager
+            .doServerLoginApiCall(LoginRequest.ServerLoginRequest(email, password))
+            .doOnSuccess { response ->
+                dataManager
+                    .updateUserInfo(
+                        response.accessToken,
+                        response.userId,
+                        DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
                         response.userName,
                         response.userEmail,
                         response.googleProfilePicUrl

@@ -1,4 +1,4 @@
-package com.ptbc.kotlin_mvvm.pageradapter
+package com.ptbc.kotlin_mvvm.pagerAdapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -16,7 +16,7 @@ class PagerAdapter (fragmentManager: FragmentManager): FragmentStatePagerAdapter
     }!!
 
     override fun getPageTitle(position: Int): CharSequence = when (position) {
-        0 -> "⌂\nTrang chủ"
+        0 -> "Trang chủ"
         1 -> "Tìm kiếm"
         2 -> "Yêu thích"
         3 -> "Đơn hàng"

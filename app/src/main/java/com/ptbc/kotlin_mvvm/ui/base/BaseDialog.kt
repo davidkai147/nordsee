@@ -15,7 +15,7 @@ import androidx.fragment.app.FragmentManager
 abstract class BaseDialog : DialogFragment() {
     private var mActivity: BaseActivity<*, *>? = null
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is BaseActivity<*, *>) {
             mActivity = context
@@ -29,7 +29,7 @@ abstract class BaseDialog : DialogFragment() {
             ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT
         )
 
-        val dialog = Dialog(context!!)
+        val dialog = Dialog(context)
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         dialog.setContentView(root)
         if (dialog.window != null) {

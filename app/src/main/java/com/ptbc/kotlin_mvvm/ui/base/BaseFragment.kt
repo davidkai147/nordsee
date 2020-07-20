@@ -43,12 +43,12 @@ abstract class BaseFragment<T : ViewDataBinding, V : BaseViewModel<*>> : Fragmen
     val isNetworkConnected: Boolean
         get() = baseActivity != null && baseActivity!!.isNetworkConnected
 
-    override fun onAttach(context: Context?) {
+    override fun onAttach(context: Context) {
         super.onAttach(context)
         if (context is BaseActivity<*, *>) {
             val activity = context as BaseActivity<T, V>?
             this.baseActivity = activity
-            activity!!.onFragmentAttached()
+            activity?.onFragmentAttached()
         }
     }
 

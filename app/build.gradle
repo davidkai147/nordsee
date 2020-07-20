@@ -84,6 +84,8 @@ dependencies {
 
     // database
     implementation "androidx.room:room-rxjava2:$rootProject.roomDatabaseVersion"
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
     kapt "androidx.room:room-compiler:$rootProject.roomDatabaseVersion"
 
     // font

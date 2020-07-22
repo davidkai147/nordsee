@@ -50,6 +50,23 @@ constructor(context: Context, @PreferenceInfo prefFileName: String) : Preference
         set(isFirstTime) {
             mPrefs.edit().putBoolean(PREF_KEY_CHECK_FIRST_TIME_LOGIN,isFirstTime).apply()
         }
+    override var adminToken: String?
+        get() = mPrefs.getString(PREF_KEY_ACCESS_TOKEN, null)
+        set(accessToken) = mPrefs.edit().putString(PREF_KEY_ADMIN_TOKEN, accessToken).apply()
+
+    override var adminTokenType: String?
+        get() = mPrefs.getString(PREF_KEY_ACCESS_TOKEN, null)
+        set(accessToken) = mPrefs.edit().putString(PREF_KEY_ADMIN_TOKEN_TYPE, accessToken).apply()
+
+    override var adminExpiresIn: Long?
+        get() {
+            val adminExpiresIn = mPrefs.getLong(PREF_KEY_EXPIRES_IN, AppConstants.NULL_INDEX)
+            return if (adminExpiresIn == AppConstants.NULL_INDEX) null else adminExpiresIn
+        }
+        set(adminExpiresIn) {
+            val id = adminExpiresIn ?: AppConstants.NULL_INDEX
+            mPrefs.edit().putLong(PREF_KEY_EXPIRES_IN, id).apply()
+        }
 
     init {
         mPrefs = context.getSharedPreferences(prefFileName, Context.MODE_PRIVATE)
@@ -74,5 +91,11 @@ constructor(context: Context, @PreferenceInfo prefFileName: String) : Preference
         private const val PREF_KEY_USER_LOGGED_IN_MODE = "PREF_KEY_USER_LOGGED_IN_MODE"
 
         private const val PREF_KEY_CHECK_FIRST_TIME_LOGIN = "PREF_KEY_CHECK_FIRST_TIME_LOGIN"
+
+        private const val PREF_KEY_ADMIN_TOKEN = "PREF_KEY_ADMIN_TOKEN"
+
+        private const val PREF_KEY_ADMIN_TOKEN_TYPE = "PREF_KEY_ADMIN_TOKEN_TYPE"
+
+        private const val PREF_KEY_EXPIRES_IN = "PREF_KEY_EXPIRES_IN"
     }
 }

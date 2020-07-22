@@ -20,11 +20,13 @@ interface DataManager : DbHelper, PreferencesHelper, ApiHelper {
 
     fun updateUserInfo(
         token: String?,
-        userId: Long?,
+//        userId: Long?,
         loggedInMode: LoggedInMode,
-        userName: String?,
-        email: String?,
-        profilePicPath: String?
+//        userName: String?,
+//        email: String?,
+//        profilePicPath: String?
+        tokenType: String?,
+        expiresIn: Long?
     )
 
     enum class LoggedInMode(val type: Int) {

@@ -18,5 +18,11 @@ interface PreferencesHelper {
 
     var isFirstTimeLogin: Boolean
 
+    var adminToken: String?
+
+    var adminTokenType: String?
+
+    var adminExpiresIn: Long?
+
     fun setCurrentUserLoggedInMode(mode: DataManager.LoggedInMode)
 }

@@ -111,7 +111,9 @@ class AppModule {
         return ApiHeader.ProtectedApiHeader(
             apiKey,
             preferencesHelper.currentUserId,
-            preferencesHelper.accessToken
+            preferencesHelper.accessToken,
+            preferencesHelper.adminToken
+            //preferencesHelper.adminTokenType
         )
     }
 

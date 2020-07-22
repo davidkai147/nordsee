@@ -15,4 +15,6 @@ object ApiEndPoint {
     const val ENDPOINT_OPEN_SOURCE = BuildConfig.BASE_URL + "/5926c34212000035026871cd"
 
     const val ENDPOINT_SERVER_LOGIN = BuildConfig.BASE_URL + "/588d15f5100000a8072d2945"
+
+    const val ENDPOINT_LOGIN = BuildConfig.BASE_URL + "/login"
 }// This class is not publicly instantiable

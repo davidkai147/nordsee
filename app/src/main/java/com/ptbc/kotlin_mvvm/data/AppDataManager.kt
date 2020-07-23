@@ -213,7 +213,9 @@ constructor(
 //        )
         updateUserInfo(
             null,
-            DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT, null, null
+            DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
+            null,
+            null
         )
     }
 
@@ -237,25 +239,6 @@ constructor(
         adminTokenType = tokenType
         adminExpiresIn = expiresIn
     }
-
-//    override fun updateUserInfo(
-//        token: String?,
-//        userId: Long?,
-//        loggedInMode: DataManager.LoggedInMode,
-//        userName: String?,
-//        email: String?,
-//        profilePicPath: String?
-//    ) {
-//
-//        accessToken = token
-//        currentUserId = userId
-//        setCurrentUserLoggedInMode(loggedInMode)
-//        currentUserName = userName
-//        currentUserEmail = email
-//        currentUserProfilePicUrl = profilePicPath
-//
-//        updateApiHeader(userId, accessToken)
-//    }
 
     companion object {
 

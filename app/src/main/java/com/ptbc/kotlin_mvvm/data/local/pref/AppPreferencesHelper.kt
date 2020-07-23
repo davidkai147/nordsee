@@ -51,12 +51,12 @@ constructor(context: Context, @PreferenceInfo prefFileName: String) : Preference
             mPrefs.edit().putBoolean(PREF_KEY_CHECK_FIRST_TIME_LOGIN,isFirstTime).apply()
         }
     override var adminToken: String?
-        get() = mPrefs.getString(PREF_KEY_ACCESS_TOKEN, null)
-        set(accessToken) = mPrefs.edit().putString(PREF_KEY_ADMIN_TOKEN, accessToken).apply()
+        get() = mPrefs.getString(PREF_KEY_ADMIN_TOKEN, null)
+        set(adminToken) = mPrefs.edit().putString(PREF_KEY_ADMIN_TOKEN, adminToken).apply()
 
     override var adminTokenType: String?
-        get() = mPrefs.getString(PREF_KEY_ACCESS_TOKEN, null)
-        set(accessToken) = mPrefs.edit().putString(PREF_KEY_ADMIN_TOKEN_TYPE, accessToken).apply()
+        get() = mPrefs.getString(PREF_KEY_ADMIN_TOKEN_TYPE, null)
+        set(adminToken) = mPrefs.edit().putString(PREF_KEY_ADMIN_TOKEN_TYPE, adminToken).apply()
 
     override var adminExpiresIn: Long?
         get() {

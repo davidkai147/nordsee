@@ -1,8 +1,6 @@
 package com.ptbc.kotlin_mvvm.ui.login
 
 import android.text.TextUtils
-import android.widget.Toast
-import com.ptbc.kotlin_mvvm.R
 import com.ptbc.kotlin_mvvm.data.DataManager
 import com.ptbc.kotlin_mvvm.data.model.api.LoginRequest
 import com.ptbc.kotlin_mvvm.ui.base.BaseViewModel

@@ -39,7 +39,7 @@ constructor(override val apiHeader: ApiHeader) : ApiHelper {
     }
 
     override fun doLogoutApiCall(): Single<LogoutResponse> {
-        return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_LOGOUT )
+        return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_LOGIN)
             .addHeaders(apiHeader.protectedApiHeader)
             .build()
             .getObjectSingle(LogoutResponse::class.java)

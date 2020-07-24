@@ -17,9 +17,9 @@ class MainViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvid
 
     val appVersion = ObservableField<String>()
 
-    private val questionCardData: MutableLiveData<List<QuestionCardData>>
+   // private val questionCardData: MutableLiveData<List<QuestionCardData>>
 
-    val questionDataList: ObservableList<QuestionCardData> = ObservableArrayList<QuestionCardData>()
+   // val questionDataList: ObservableList<QuestionCardData> = ObservableArrayList<QuestionCardData>()
 
     val userEmail = ObservableField<String>()
 
@@ -30,35 +30,35 @@ class MainViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvid
     var action = NO_ACTION
 
     init {
-        questionCardData = MutableLiveData<List<QuestionCardData>>()
-        loadQuestionCards()
+//        questionCardData = MutableLiveData<List<QuestionCardData>>()
+//        loadQuestionCards()
     }
 
-    fun getQuestionCardData(): LiveData<List<QuestionCardData>> {
-        return questionCardData
-    }
+//    fun getQuestionCardData(): LiveData<List<QuestionCardData>> {
+//        return questionCardData
+//    }
 
-    fun setQuestionDataList(questionCardDatas: List<QuestionCardData>) {
-        action = ACTION_ADD_ALL
-        questionDataList.clear()
-        questionDataList.addAll(questionCardDatas)
-    }
-
-    fun loadQuestionCards() {
-        compositeDisposable.add(dataManager
-            .questionCardData
-            .doOnNext { list -> Log.d(TAG, "loadQuestionCards: " + list.size) }
-            .subscribeOn(schedulerProvider.io())
-            .observeOn(schedulerProvider.ui())
-            .subscribe({ questionList ->
-                if (questionList != null) {
-                    Log.d(TAG, "loadQuestionCards: " + questionList.size)
-                    action = ACTION_ADD_ALL
-                    questionCardData.value = questionList
-                }
-            }, { throwable -> Log.d(TAG, "loadQuestionCards: $throwable") })
-        )
-    }
+//    fun setQuestionDataList(questionCardDatas: List<QuestionCardData>) {
+//        action = ACTION_ADD_ALL
+//        questionDataList.clear()
+//        questionDataList.addAll(questionCardDatas)
+//    }
+//
+//    fun loadQuestionCards() {
+//        compositeDisposable.add(dataManager
+//            .questionCardData
+//            .doOnNext { list -> Log.d(TAG, "loadQuestionCards: " + list.size) }
+//            .subscribeOn(schedulerProvider.io())
+//            .observeOn(schedulerProvider.ui())
+//            .subscribe({ questionList ->
+//                if (questionList != null) {
+//                    Log.d(TAG, "loadQuestionCards: " + questionList.size)
+//                    action = ACTION_ADD_ALL
+//                    questionCardData.value = questionList
+//                }
+//            }, { throwable -> Log.d(TAG, "loadQuestionCards: $throwable") })
+//        )
+//    }
 
     fun logout() {
         setIsLoading(true)
@@ -93,10 +93,10 @@ class MainViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvid
         }
     }
 
-    fun removeQuestionCard() {
-        action = ACTION_DELETE_SINGLE
-        (questionCardData.value!!as MutableList).removeAt(0)
-    }
+//    fun removeQuestionCard() {
+//        action = ACTION_DELETE_SINGLE
+//        (questionCardData.value!!as MutableList).removeAt(0)
+//    }
 
     fun updateAppVersion(version: String) {
         appVersion.set(version)

@@ -24,11 +24,9 @@ class FeedPagerAdapter(fragmentManager: FragmentManager) :
         mTabCount = count
     }
 
-    override fun getItem(position: Int): Fragment? {
-        return when (position) {
-            0 -> BlogFragment()
-            1 -> OpenSourceFragment.newInstance()
-            else -> null
-        }
-    }
+    override fun getItem(position: Int): Fragment = when (position) {
+        0 -> BlogFragment()
+        1 -> OpenSourceFragment.newInstance()
+        else -> null
+    }!!
 }

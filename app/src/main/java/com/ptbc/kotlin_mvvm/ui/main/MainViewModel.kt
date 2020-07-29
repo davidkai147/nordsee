@@ -63,7 +63,7 @@ class MainViewModel(dataManager: DataManager, schedulerProvider: SchedulerProvid
     fun logout() {
         setIsLoading(true)
         compositeDisposable.add(dataManager.doLogoutApiCall()
-            .doOnSuccess { response -> dataManager.setUserAsLoggedOut() }
+            .doOnSuccess { response -> dataManager.setUserAsLoggedOut()}
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribe({ response ->

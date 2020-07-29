@@ -79,6 +79,7 @@ dependencies {
     implementation "androidx.vectordrawable:vectordrawable-animated:$rootProject.animatedVectorDrawableVersion"
     implementation "androidx.constraintlayout:constraintlayout:$rootProject.constraintLayoutVersion"
 
+
     // network
     implementation "com.amitshekhar.android:rx2-android-networking:$rootProject.rx2FastAndroidNetworking"
 
@@ -119,4 +120,7 @@ dependencies {
     // view model
     implementation "androidx.lifecycle:lifecycle-extensions:$rootProject.lifecycleVersion"
     kapt "androidx.lifecycle:lifecycle-compiler:$rootProject.lifecycleVersion"
+
+    //picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
 }

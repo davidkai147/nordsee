@@ -4,6 +4,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentStatePagerAdapter
 import com.ptbc.kotlin_mvvm.ui.home.*
+import com.ptbc.kotlin_mvvm.ui.search.SearchFragment
 
 class PagerAdapter (fragmentManager: FragmentManager): FragmentStatePagerAdapter(fragmentManager){
     override fun getItem(position: Int): Fragment = when (position) {
@@ -16,11 +17,11 @@ class PagerAdapter (fragmentManager: FragmentManager): FragmentStatePagerAdapter
     }!!
 
     override fun getPageTitle(position: Int): CharSequence = when (position) {
-        0 -> "Trang chủ"
-        1 -> "Tìm kiếm"
-        2 -> "Yêu thích"
-        3 -> "Đơn hàng"
-        4 -> "Tài khoản"
+        0 -> "Home"
+        1 -> "Search"
+        2 -> "Wish list"
+        3 -> "Orders"
+        4 -> "My\naccount"
         else -> ""
     }
 

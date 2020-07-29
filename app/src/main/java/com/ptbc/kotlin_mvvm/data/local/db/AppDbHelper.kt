@@ -1,5 +1,6 @@
 package com.ptbc.kotlin_mvvm.data.local.db
 
+import com.ptbc.kotlin_mvvm.data.model.db.City
 import com.ptbc.kotlin_mvvm.data.model.db.Option
 import com.ptbc.kotlin_mvvm.data.model.db.Question
 import com.ptbc.kotlin_mvvm.data.model.db.User
@@ -25,6 +26,9 @@ constructor(private val mAppDatabase: AppDatabase) : DbHelper {
     override val isQuestionEmpty: Observable<Boolean>
         get() = mAppDatabase.questionDao().loadAll()
             .flatMapObservable { questions -> Observable.just(questions.isEmpty()) }
+
+    override val allCities: Observable<List<City>>
+        get() = mAppDatabase.cityDao().getCities().toObservable()
 
     override fun getOptionsForQuestionId(questionId: Long?): Observable<List<Option>> {
         return mAppDatabase.optionDao().loadAllByQuestionId(questionId)

@@ -17,7 +17,9 @@ constructor(val publicApiHeader: PublicApiHeader, val protectedApiHeader: Protec
         @field:SerializedName("user_id")
         var userId: Long?, @field:Expose
         @field:SerializedName("access_token")
-        var accessToken: String?
+        var accessToken: String?, @field:Expose
+        @field:SerializedName("token")
+        var adminToken: String?
     )
 
     class PublicApiHeader @Inject

@@ -43,11 +43,16 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), Logi
         val password = mActivityLoginBinding!!.etPassword.getText().toString()
         if (mLoginViewModel.isEmailAndPasswordValid(email, password)) {
             hideKeyboard()
-            if (chkRememberMe.isChecked){
-                mLoginViewModel.rememberLogin(email, password)
+            if (email.equals("admin@gmail.com") && password.equals("123456")){
+                if (chkRememberMe.isChecked){
+                    mLoginViewModel.rememberLogin(email, password)
+                }
+                else{
+                    mLoginViewModel.forgetLogin(email,password)
+                }
             }
-            else{
-                mLoginViewModel.forgetLogin(email,password)
+           else{
+                Toast.makeText(this, getString(R.string.invalid_user), Toast.LENGTH_SHORT).show()
             }
 
         } else {

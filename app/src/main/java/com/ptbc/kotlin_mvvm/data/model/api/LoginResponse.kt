@@ -4,7 +4,6 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class LoginResponse {
-
     @Expose
     @SerializedName("access_token")
     val accessToken: String? = null
@@ -41,6 +40,19 @@ class LoginResponse {
     @SerializedName("user_name")
     val userName: String? = null
 
+    //adminLoginResponse
+    @Expose
+    @SerializedName("token")
+    val adminToken: String? = null
+
+    @Expose
+    @SerializedName("token_type")
+    val adminTokenType: String? = null
+
+    @Expose
+    @SerializedName("expires_in")
+    val expiresIn: Long? = null
+
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
@@ -66,6 +78,18 @@ class LoginResponse {
         if (if (userEmail != null) userEmail != that.userEmail else that.userEmail != null) {
             return false
         }
+
+        //adminLoginResponse
+        if (if (adminToken != null) adminToken != that.adminToken else that.adminToken != null) {
+            return false
+        }
+        if (if (adminTokenType != null) adminTokenType != that.adminTokenType else that.adminTokenType != null) {
+            return false
+        }
+        if (if (expiresIn != null) expiresIn != that.expiresIn else that.expiresIn != null) {
+            return false
+        }
+
         if (if (serverProfilePicUrl != null)
                 serverProfilePicUrl != that.serverProfilePicUrl
             else
@@ -101,6 +125,10 @@ class LoginResponse {
         result = 31 * result + (fbProfilePicUrl?.hashCode() ?: 0)
         result = 31 * result + (googleProfilePicUrl?.hashCode() ?: 0)
         result = 31 * result + (message?.hashCode() ?: 0)
+        //adminLoginResponse
+        result = 31 * result + (adminToken?.hashCode() ?: 0)
+        result = 31 * result + (adminTokenType?.hashCode() ?: 0)
+        result = 31 * result + (expiresIn?.hashCode() ?: 0)
         return result
     }
 }

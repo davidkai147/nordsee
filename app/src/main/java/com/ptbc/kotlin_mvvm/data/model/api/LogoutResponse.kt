@@ -13,6 +13,18 @@ class LogoutResponse {
     @SerializedName("status_code")
     val statusCode: String? = null
 
+//    @Expose
+//    @SerializedName("token")
+//    val logoutToken: String? = null
+//
+//    @Expose
+//    @SerializedName("token_type")
+//    val logoutTokenType: String? = null
+//
+//    @Expose
+//    @SerializedName("expires_in")
+//    val logoutExpiresIn: Long? = null
+
     override fun equals(other: Any?): Boolean {
         if (this === other) {
             return true
@@ -33,6 +45,9 @@ class LogoutResponse {
     override fun hashCode(): Int {
         var result = statusCode?.hashCode() ?: 0
         result = 31 * result + (message?.hashCode() ?: 0)
+//        result = 31 * result + (logoutToken?.hashCode() ?: 0)
+//        result = 31 * result + (logoutTokenType?.hashCode() ?: 0)
+//        result = 31 * result + (logoutExpiresIn?.hashCode() ?: 0)
         return result
     }
 }

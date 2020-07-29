@@ -38,6 +38,25 @@ constructor(
             mApiHelper.apiHeader.protectedApiHeader.accessToken = accessToken
         }
 
+    override var adminToken: String?
+        get() = mPreferencesHelper.adminToken
+        set(adminToken) {
+            mPreferencesHelper.adminToken = adminToken
+            mApiHelper.apiHeader.protectedApiHeader.adminToken = adminToken
+        }
+
+    override var adminTokenType: String?
+        get() = mPreferencesHelper.adminTokenType
+        set(adminTokenType) {
+            mPreferencesHelper.adminTokenType = adminTokenType
+        }
+
+    override var adminExpiresIn: Long?
+        get() = mPreferencesHelper.adminExpiresIn
+        set(adminExpiresIn) {
+            mPreferencesHelper.adminExpiresIn = adminExpiresIn
+        }
+
     override val allQuestions: Observable<List<Question>>
         get() = mDbHelper.allQuestions
 
@@ -188,34 +207,37 @@ constructor(
     }
 
     override fun setUserAsLoggedOut() {
+//        updateUserInfo(
+//            null, null,
+//            DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT, null, null, null
+//        )
         updateUserInfo(
-            null, null,
-            DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT, null, null, null
+            null,
+            DataManager.LoggedInMode.LOGGED_IN_MODE_LOGGED_OUT,
+            null,
+            null
         )
     }
 
     override fun updateApiHeader(userId: Long?, token: String?) {
         mApiHelper.apiHeader.protectedApiHeader.userId = userId
-        mApiHelper.apiHeader.protectedApiHeader.accessToken = accessToken
+        mApiHelper.apiHeader.protectedApiHeader.accessToken = token
     }
 
     override fun updateUserInfo(
         token: String?,
-        userId: Long?,
         loggedInMode: DataManager.LoggedInMode,
-        userName: String?,
-        email: String?,
-        profilePicPath: String?
+        tokenType: String?,
+        expiresIn: Long?
     ) {
-
-        accessToken = token
-        currentUserId = userId
+        adminToken = token
+     //   currentUserId = userId
         setCurrentUserLoggedInMode(loggedInMode)
-        currentUserName = userName
-        currentUserEmail = email
-        currentUserProfilePicUrl = profilePicPath
-
-        updateApiHeader(userId, accessToken)
+//        currentUserName = userName
+//        currentUserEmail = email
+//        currentUserProfilePicUrl = profilePicPath
+        adminTokenType = tokenType
+        adminExpiresIn = expiresIn
     }
 
     companion object {

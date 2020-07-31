@@ -8,6 +8,7 @@ import com.ptbc.kotlin_mvvm.ui.feed.opensource.OpenSourceFragmentProvider
 import com.ptbc.kotlin_mvvm.ui.login.LoginActivity
 import com.ptbc.kotlin_mvvm.ui.main.MainActivity
 import com.ptbc.kotlin_mvvm.ui.main.rating.RateUseDialogProvider
+import com.ptbc.kotlin_mvvm.ui.search.SearchFragmentProvider
 import com.ptbc.kotlin_mvvm.ui.splash.SplashActivity
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
@@ -17,7 +18,7 @@ abstract class ActivityBuilder {
 
     @ContributesAndroidInjector(
         modules = [FeedActivityModule::class,
-            BlogFragmentProvider::class, OpenSourceFragmentProvider::class]
+            BlogFragmentProvider::class, OpenSourceFragmentProvider::class, SearchFragmentProvider::class]
     )
     internal abstract fun bindFeedActivity(): FeedActivity
 

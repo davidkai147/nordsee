@@ -1,6 +1,5 @@
 package com.ptbc.kotlin_mvvm.data.local.db
 
-import com.ptbc.kotlin_mvvm.data.model.db.City
 import com.ptbc.kotlin_mvvm.data.model.db.Option
 import com.ptbc.kotlin_mvvm.data.model.db.Question
 import com.ptbc.kotlin_mvvm.data.model.db.User
@@ -15,8 +14,6 @@ interface DbHelper {
     val isOptionEmpty: Observable<Boolean>
 
     val isQuestionEmpty: Observable<Boolean>
-
-    val allCities: Observable<List<City>>
 
     fun getOptionsForQuestionId(questionId: Long?): Observable<List<Option>>
 

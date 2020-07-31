@@ -11,6 +11,8 @@ interface ApiHelper {
 
     val openSourceApiCall: Single<OpenSourceResponse>
 
+    val cityApiCall: Single<CityResponse>
+
     fun doFacebookLoginApiCall(request: LoginRequest.FacebookLoginRequest): Single<LoginResponse>
 
     fun doGoogleLoginApiCall(request: LoginRequest.GoogleLoginRequest): Single<LoginResponse>
@@ -18,4 +20,5 @@ interface ApiHelper {
     fun doLogoutApiCall(): Single<LogoutResponse>
 
     fun doServerLoginApiCall(request: LoginRequest.ServerLoginRequest): Single<LoginResponse>
+
 }

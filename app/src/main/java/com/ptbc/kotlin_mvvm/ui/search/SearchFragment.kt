@@ -1,32 +1,81 @@
 package com.ptbc.kotlin_mvvm.ui.search
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.recyclerview.widget.GridLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.ptbc.kotlin_mvvm.BR
 import com.ptbc.kotlin_mvvm.R
+import com.ptbc.kotlin_mvvm.ViewModelProviderFactory
+import com.ptbc.kotlin_mvvm.data.model.api.CityResponse
+import com.ptbc.kotlin_mvvm.databinding.FragmentSearchBinding
+import com.ptbc.kotlin_mvvm.ui.base.BaseFragment
+import javax.inject.Inject
 
-class SearchFragment : Fragment() {
-    lateinit var recyclerViewSearch: RecyclerView
-    lateinit var adapter: SearchAdapter
-    lateinit var imageView: ArrayList<Int>
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), SearchNavigator,
+    SearchAdapter.CityAdapterListener {
 
-        var view : View = inflater.inflate(R.layout.fragment_search, container, false)
+    @Inject
+    lateinit var mSearchAdapter: SearchAdapter
+    private var mFragmentSearchBinding: FragmentSearchBinding? = null
+    @Inject
+    lateinit var mLayoutManager: LinearLayoutManager
+    @Inject
+    lateinit var factory: ViewModelProviderFactory
+    lateinit var mSearchViewModel: SearchViewModel
 
-        recyclerViewSearch = view.findViewById(R.id.recyclerview_search)
-        recyclerViewSearch.layoutManager =  GridLayoutManager(activity, 2, GridLayoutManager.VERTICAL, false)
+    override val bindingVariable: Int
+        get() = BR.viewModel
 
-        adapter = SearchAdapter()
-        recyclerViewSearch.adapter = adapter
-        return view
+    override val layoutId: Int
+        get() = R.layout.fragment_search
+
+    override val viewModel: SearchViewModel
+        get() {
+            mSearchViewModel = ViewModelProviders.of(this, factory).get(SearchViewModel::class.java)
+            return mSearchViewModel
+        }
+
+    override fun handleError(throwable: Throwable) {
+        // handle error
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+      //  AndroidSupportInjection.inject(this)
+        super.onCreate(savedInstanceState)
+        mSearchViewModel.navigator = this
+        mSearchAdapter.setListener(this)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        mFragmentSearchBinding = viewDataBinding
+        setUp()
+    }
+
+    override fun updateCity(cityList: List<CityResponse.Cities>?) {
+        if (cityList != null) {
+            mSearchAdapter.addItems(cityList)
+        }
+    }
+
+    private fun setUp() {
+        mLayoutManager.orientation = LinearLayoutManager.VERTICAL
+        mFragmentSearchBinding?.recyclerviewSearch?.layoutManager = mLayoutManager
+     //   mFragmentSearchBinding?.recyclerviewSearch?.itemAnimator = DefaultItemAnimator()
+        mFragmentSearchBinding?.recyclerviewSearch?.adapter = mSearchAdapter
+    }
+
+    override fun onRetryClick() {
+        mSearchViewModel.fetchCities()
     }
 
     companion object {
-        fun newInstance() = SearchFragment()
+        fun newInstance() : SearchFragment{
+            val args = Bundle()
+            val fragment = SearchFragment()
+            fragment.arguments = args
+            return fragment
+        }
     }
 }

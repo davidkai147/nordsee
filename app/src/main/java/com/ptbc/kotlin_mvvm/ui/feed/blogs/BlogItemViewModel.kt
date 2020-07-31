@@ -20,11 +20,11 @@ class BlogItemViewModel(
     val title: ObservableField<String>
 
     init {
-        imageUrl = ObservableField<String>(mBlog.coverImgUrl)
-        title = ObservableField<String>(mBlog.title)
-        author = ObservableField<String>(mBlog.author)
-        date = ObservableField<String>(mBlog.date)
-        content = ObservableField<String>(mBlog.description)
+        imageUrl = ObservableField<String>(mBlog.coverImgUrl)!!
+        title = ObservableField<String>(mBlog.title)!!
+        author = ObservableField<String>(mBlog.author)!!
+        date = ObservableField<String>(mBlog.date)!!
+        content = ObservableField<String>(mBlog.description)!!
     }
 
     fun onItemClick() {

@@ -10,6 +10,7 @@ import com.ptbc.kotlin_mvvm.ui.feed.opensource.OpenSourceViewModel
 import com.ptbc.kotlin_mvvm.ui.login.LoginViewModel
 import com.ptbc.kotlin_mvvm.ui.main.MainViewModel
 import com.ptbc.kotlin_mvvm.ui.main.rating.RateUsViewModel
+import com.ptbc.kotlin_mvvm.ui.search.SearchViewModel
 import com.ptbc.kotlin_mvvm.ui.splash.SplashViewModel
 import com.ptbc.kotlin_mvvm.utils.rx.SchedulerProvider
 import javax.inject.Inject
@@ -35,7 +36,10 @@ constructor(
         } else if (modelClass.isAssignableFrom(BlogViewModel::class.java)) {
 
             return BlogViewModel(dataManager, schedulerProvider) as T
-        } else if (modelClass.isAssignableFrom(RateUsViewModel::class.java)) {
+        }else if (modelClass.isAssignableFrom(SearchViewModel::class.java)) {
+
+            return SearchViewModel(dataManager, schedulerProvider) as T
+        }else if (modelClass.isAssignableFrom(RateUsViewModel::class.java)) {
 
             return RateUsViewModel(dataManager, schedulerProvider) as T
         } else if (modelClass.isAssignableFrom(OpenSourceViewModel::class.java)) {

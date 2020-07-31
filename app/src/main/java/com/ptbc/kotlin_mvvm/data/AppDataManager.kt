@@ -7,7 +7,6 @@ import com.google.gson.reflect.TypeToken
 import com.ptbc.kotlin_mvvm.data.local.db.DbHelper
 import com.ptbc.kotlin_mvvm.data.local.pref.PreferencesHelper
 import com.ptbc.kotlin_mvvm.data.model.api.*
-import com.ptbc.kotlin_mvvm.data.model.db.City
 import com.ptbc.kotlin_mvvm.data.model.db.Option
 import com.ptbc.kotlin_mvvm.data.model.db.Question
 import com.ptbc.kotlin_mvvm.data.model.db.User
@@ -70,6 +69,9 @@ constructor(
     override val blogApiCall: Single<BlogResponse>
         get() = mApiHelper.blogApiCall
 
+    override val cityApiCall: Single<CityResponse>
+        get() = mApiHelper.cityApiCall
+
     override var currentUserEmail: String?
         get() = mPreferencesHelper.currentUserEmail
         set(email) {
@@ -127,9 +129,6 @@ constructor(
 
     override val isQuestionEmpty: Observable<Boolean>
         get() = mDbHelper.isQuestionEmpty
-
-    override val allCities: Observable<List<City>>
-        get() = mDbHelper.allCities
 
     override fun doFacebookLoginApiCall(request: LoginRequest.FacebookLoginRequest): Single<LoginResponse> {
         return mApiHelper.doFacebookLoginApiCall(request)

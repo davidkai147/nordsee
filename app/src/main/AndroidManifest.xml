@@ -47,14 +47,14 @@
                 android:name=".ui.main.MainActivity"
                 android:launchMode="singleTop"
            />
-        <activity
-                android:name=".ui.feed.FeedActivity"
-                android:launchMode="singleTop"
-                android:parentActivityName=".ui.main.MainActivity">
-            <meta-data
-                    android:name="android.support.PARENT_ACTIVITY"
-                    android:value=".ui.main.MainActivity" />
-        </activity>
+<!--        <activity-->
+<!--                android:name=".ui."-->
+<!--                android:launchMode="singleTop"-->
+<!--                android:parentActivityName=".ui.main.MainActivity">-->
+<!--            <meta-data-->
+<!--                    android:name="android.support.PARENT_ACTIVITY"-->
+<!--                    android:value=".ui.main.MainActivity" />-->
+<!--        </activity>-->
     </application>
 
 </manifest>

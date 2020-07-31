@@ -22,6 +22,12 @@ constructor(override val apiHeader: ApiHeader) : ApiHelper {
             .build()
             .getObjectSingle(OpenSourceResponse::class.java)
 
+    override val cityApiCall: Single<CityResponse>
+        get() =  Rx2AndroidNetworking.get(ApiEndPoint.ENDPOINT_CITY)
+            .addHeaders(apiHeader.protectedApiHeader)
+            .build()
+            .getObjectSingle(CityResponse::class.java)
+
     override fun doFacebookLoginApiCall(request: LoginRequest.FacebookLoginRequest): Single<LoginResponse> {
         return Rx2AndroidNetworking.post(ApiEndPoint.ENDPOINT_FACEBOOK_LOGIN)
             .addHeaders(apiHeader.publicApiHeader)

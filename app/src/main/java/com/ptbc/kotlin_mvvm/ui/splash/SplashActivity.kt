@@ -15,6 +15,7 @@ import com.ptbc.kotlin_mvvm.R
 import com.ptbc.kotlin_mvvm.ViewModelProviderFactory
 import com.ptbc.kotlin_mvvm.databinding.ActivitySplashBinding
 import com.ptbc.kotlin_mvvm.ui.base.BaseActivity
+import com.ptbc.kotlin_mvvm.ui.feed.FeedActivity
 import com.ptbc.kotlin_mvvm.ui.login.LoginActivity
 import com.ptbc.kotlin_mvvm.ui.main.MainActivity
 import javax.inject.Inject
@@ -56,7 +57,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(), S
     }
 
     override fun openMainActivity() {
-        val intent = MainActivity.newIntent(this@SplashActivity)
+        val intent = FeedActivity.newIntent(this@SplashActivity)
         startActivity(intent)
         finish()
     }

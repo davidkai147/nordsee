@@ -6,6 +6,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class CityResponse {
+
     @Expose
     @SerializedName("data")
     val data: List<Cities>? = null
@@ -14,11 +15,11 @@ class CityResponse {
         if (this === other) {
             return true
         }
-        if (other !is BlogResponse) {
+        if (other !is CityResponse) {
             return false
         }
 
-        val that = other as BlogResponse?
+        val that = other as CityResponse?
 
         return data == that?.data
     }
@@ -31,7 +32,7 @@ class CityResponse {
     class Cities {
 
         @Expose
-        @PrimaryKey
+        @SerializedName("id")
         var id: Int? = null
 
         @Expose

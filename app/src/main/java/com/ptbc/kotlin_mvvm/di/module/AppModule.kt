@@ -113,7 +113,6 @@ class AppModule {
             preferencesHelper.currentUserId,
             preferencesHelper.accessToken,
             preferencesHelper.adminToken
-            //preferencesHelper.adminTokenType
         )
     }
 

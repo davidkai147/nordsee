@@ -12,6 +12,7 @@ import com.ptbc.kotlin_mvvm.R
 import com.ptbc.kotlin_mvvm.ViewModelProviderFactory
 import com.ptbc.kotlin_mvvm.databinding.ActivityLoginBinding
 import com.ptbc.kotlin_mvvm.ui.base.BaseActivity
+import com.ptbc.kotlin_mvvm.ui.feed.FeedActivity
 import javax.inject.Inject
 
 class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), LoginNavigator {
@@ -61,7 +62,7 @@ class LoginActivity : BaseActivity<ActivityLoginBinding, LoginViewModel>(), Logi
     }
 
     override fun openMainActivity() {
-        val intent = MainActivity.newIntent(this@LoginActivity)
+        val intent = FeedActivity.newIntent(this@LoginActivity)
         startActivity(intent)
         finish()
     }

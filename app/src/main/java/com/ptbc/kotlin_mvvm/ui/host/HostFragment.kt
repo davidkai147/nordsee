@@ -32,9 +32,9 @@ class HostFragment : Fragment() {
 
     private fun setupViewPager() {
 
-        val adapter = PagerAdapter(childFragmentManager!!)
+        //val adapter = PagerAdapter(childFragmentManager!!)
 
-        viewPager.adapter = adapter
+      //  viewPager.adapter = adapter
 
         viewPager.setOffscreenPageLimit(5)
 
@@ -43,6 +43,6 @@ class HostFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance() = HostFragment()
+        //fun newInstance() = HostFragment()
     }
 }

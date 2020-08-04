@@ -79,6 +79,8 @@
     <string name="title">My Feed</string>
     <string name="open_source">Open Source</string>
     <string name="blog">Blog</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
 
     <!--empty state-->
     <string name="empty_screen">We do not have anything\nhere right now.</string>

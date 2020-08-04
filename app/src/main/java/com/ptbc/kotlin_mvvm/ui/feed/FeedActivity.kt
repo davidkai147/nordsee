@@ -91,12 +91,12 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>(),
 
         mActivityFeedBinding?.tabLayout?.addTab(
             mActivityFeedBinding?.tabLayout!!.newTab().setText(
-                getString(R.string.blog)
+                getString(R.string.home)
             )
         )
         mActivityFeedBinding?.tabLayout?.addTab(
             mActivityFeedBinding?.tabLayout!!.newTab().setText(
-                getString(R.string.open_source)
+                getString(R.string.search)
             )
         )
 

@@ -26,7 +26,6 @@ class SearchViewModel(
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribe({ cityResponse ->
-                var a = cityResponse.data
                 if (cityResponse?.data != null) {
                     cityListLiveData.value = cityResponse.data
                 }

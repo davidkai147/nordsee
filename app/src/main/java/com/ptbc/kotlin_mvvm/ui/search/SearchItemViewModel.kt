@@ -8,14 +8,14 @@ class SearchItemViewModel(
     val mListener: FragmentSearchItemViewModelListener
 ) {
 
-    //val id: ObservableField<Int>
+    val id: ObservableField<Int>
 
     val name: ObservableField<String>
 
     val thumbnail: ObservableField<String>
 
     init {
-        //id = ObservableField<Int>(mCity.id)!!
+        id = ObservableField<Int>(mCity.id)!!
         name = ObservableField<String>(mCity.nameCity)!!
         thumbnail = ObservableField<String>(mCity.thumbnailCity)!!
     }

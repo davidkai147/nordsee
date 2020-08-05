@@ -1,9 +1,13 @@
 package com.ptbc.kotlin_mvvm.ui.search
 
+import android.app.Activity
 import android.os.Bundle
 import android.view.View
+import android.view.WindowManager
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.ptbc.kotlin_mvvm.BR
 import com.ptbc.kotlin_mvvm.R
 import com.ptbc.kotlin_mvvm.ViewModelProviderFactory
@@ -11,6 +15,7 @@ import com.ptbc.kotlin_mvvm.data.model.api.CityResponse
 import com.ptbc.kotlin_mvvm.databinding.FragmentSearchBinding
 import com.ptbc.kotlin_mvvm.ui.base.BaseFragment
 import javax.inject.Inject
+
 
 class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), SearchNavigator,
     SearchAdapter.CityAdapterListener {
@@ -41,10 +46,10 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), S
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
-      //  AndroidSupportInjection.inject(this)
         super.onCreate(savedInstanceState)
         mSearchViewModel.navigator = this
         mSearchAdapter.setListener(this)
+        mSearchAdapter.StaggeredGridLayoutAdapter(this)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -60,8 +65,8 @@ class SearchFragment : BaseFragment<FragmentSearchBinding, SearchViewModel>(), S
     }
 
     private fun setUp() {
-        mLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        mFragmentSearchBinding?.recyclerviewSearch?.layoutManager = mLayoutManager
+        mFragmentSearchBinding?.recyclerviewSearch?.setHasFixedSize(true)
+        mFragmentSearchBinding?.recyclerviewSearch?.layoutManager = StaggeredGridLayoutManager(2, GridLayoutManager.VERTICAL)
      //   mFragmentSearchBinding?.recyclerviewSearch?.itemAnimator = DefaultItemAnimator()
         mFragmentSearchBinding?.recyclerviewSearch?.adapter = mSearchAdapter
     }

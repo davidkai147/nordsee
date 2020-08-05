@@ -65,15 +65,15 @@ class CityResponse {
 
         @Expose
         @SerializedName("deleted_at")
-        var deletedAtCity: Int? = null
+        var deletedAtCity: String? = null
 
         @Expose
         @SerializedName("created_at")
-        var createdAtCity: Int? = null
+        var createdAtCity: String? = null
 
         @Expose
         @SerializedName("updated_at")
-        var updatedAtCity: Int? = null
+        var updatedAtCity: String? = null
 
         override fun equals(other: Any?): Boolean {
             if (this === other) {

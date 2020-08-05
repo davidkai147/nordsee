@@ -44,7 +44,7 @@ ext {
     animatedVectorDrawableVersion = '1.0.0'
     gsonVersion = '2.8.2'
     calligraphyVersion = '2.3.0'
-    glideVersion = '3.7.0'
+    glideVersion = '3.8.0'
     roomDatabaseVersion = '2.0.0'
     rx2FastAndroidNetworking = '1.0.1'
 

@@ -37,7 +37,7 @@
                 android:layout_height="wrap_content"
                 android:text="@{viewModel.name}"
                 android:textColor="@color/white"
-                android:textSize="20dp"
+                android:textSize="18dp"
                 tools:text="Australia"
                 android:layout_gravity="bottom"
                 android:layout_marginStart="10dp"

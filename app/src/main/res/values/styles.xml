@@ -175,4 +175,9 @@
         <item name="android:textSize">14dp</item>
         <item name="textAllCaps">false</item>
     </style>
+
+    <style name="MyEditText" >
+        <item name="colorControlActivated">@android:color/darker_gray</item>
+        <item name="android:backgroundTint">@color/white</item>
+    </style>
 </resources>

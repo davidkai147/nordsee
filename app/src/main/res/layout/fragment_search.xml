@@ -21,7 +21,7 @@
             android:id="@+id/appbar_search"
             android:layout_width="match_parent"
             android:layout_height="60dp"
-            android:background="@color/design_default_color_primary"
+            android:background="@color/custom_gray"
             >
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -34,7 +34,7 @@
                 android:layout_height="25dp"
                 android:layout_margin="15dp"
                 android:src="@drawable/ic_search"
-                android:tint="@android:color/white"
+                android:tint="@android:color/black"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/et_search_field"
@@ -46,14 +46,16 @@
                 android:layout_height="match_parent"
                 android:hint="Destination, activity, or interest"
                 android:paddingEnd="10dp"
-                android:textColor="#fff"
+                android:textColor="@color/black"
                 android:textSize="16dp"
                 android:textStyle="bold"
                 android:singleLine="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintStart_toEndOf="@id/imgview_back"
-                android:backgroundTint="@color/white"/>
+                android:backgroundTint="@color/white"
+                android:theme="@style/MyEditText"
+                />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.appbar.AppBarLayout>
 

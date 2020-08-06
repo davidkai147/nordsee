@@ -81,7 +81,7 @@
                 android:id="@+id/btn_ic_search"
                 android:layout_width="33dp"
                 android:layout_height="33dp"
-                android:background="@color/design_default_color_primary"
+                android:background="@color/colorPrimary"
                 android:src="@drawable/ic_search"
                 android:translationZ="@dimen/button_text"
                 app:layout_constraintBottom_toBottomOf="@id/img_background"

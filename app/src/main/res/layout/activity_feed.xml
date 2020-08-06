@@ -11,43 +11,54 @@
             type="com.ptbc.kotlin_mvvm.ui.feed.FeedViewModel" />
     </data>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<!--        <com.google.android.material.appbar.AppBarLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content">-->
 
-            <androidx.appcompat.widget.Toolbar
-                android:id="@+id/toolbar"
-                style="@style/Toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:subtitleTextColor="@color/white"
-                app:title="@string/title"
-                app:titleTextAppearance="@style/Toolbar.TitleText"
-                app:titleTextColor="@color/white" />
+<!--            <androidx.appcompat.widget.Toolbar-->
+<!--                android:id="@+id/toolbar"-->
+<!--                style="@style/Toolbar"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                app:subtitleTextColor="@color/white"-->
+<!--                app:title="@string/title"-->
+<!--                app:titleTextAppearance="@style/Toolbar.TitleText"-->
+<!--                app:titleTextColor="@color/white" />-->
 
-            <com.google.android.material.tabs.TabLayout
-                android:id="@+id/tabLayout"
-                style="@style/AppTab"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorPrimary"
-                app:tabGravity="fill"
-                app:tabIndicatorColor="@color/white" />
+<!--            <com.google.android.material.tabs.TabLayout-->
+<!--                android:id="@+id/tabLayout"-->
+<!--                style="@style/AppTab"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:background="@color/colorPrimary"-->
+<!--                app:tabGravity="fill"-->
+<!--                app:tabIndicatorColor="@color/white" />-->
 
-        </com.google.android.material.appbar.AppBarLayout>
+<!--        </com.google.android.material.appbar.AppBarLayout>-->
 
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/feedViewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/white"
+            android:layout_above="@id/tabLayout"
             android:clipToPadding="false" />
 
-    </LinearLayout>
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            style="@style/AppTab"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:background="@color/colorPrimary"
+            app:tabGravity="fill"
+            android:layout_alignParentBottom="true"
+            app:tabIndicatorColor="@color/white" />
+
+    </RelativeLayout>
 
 </layout>

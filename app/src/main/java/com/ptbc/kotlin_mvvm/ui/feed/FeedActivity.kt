@@ -79,11 +79,11 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>(),
     }
 
     private fun setUp() {
-        setSupportActionBar(mActivityFeedBinding?.toolbar)
-        if (supportActionBar != null) {
-            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
-            supportActionBar!!.setDisplayShowHomeEnabled(true)
-        }
+//        setSupportActionBar(mActivityFeedBinding?.toolbar)
+//        if (supportActionBar != null) {
+//            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+//            supportActionBar!!.setDisplayShowHomeEnabled(true)
+//        }
 
         mPagerAdapter.count = 2
 

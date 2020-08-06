@@ -53,7 +53,7 @@
             android:id="@+id/tabLayout"
             style="@style/AppTab"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="55dp"
             android:background="@color/colorPrimary"
             app:tabGravity="fill"
             android:layout_alignParentBottom="true"

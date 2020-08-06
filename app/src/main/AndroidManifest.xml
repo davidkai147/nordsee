@@ -20,7 +20,6 @@
         <activity android:name=".ui.logo.LogoActivity"
             android:configChanges="orientation"
             >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -31,7 +30,6 @@
         <activity android:name=".ui.splash.SplashActivity"
             android:configChanges="orientation"
             >
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

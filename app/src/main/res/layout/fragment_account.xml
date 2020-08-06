@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/cicrle_imageview_profile"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/profile_avatar"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="4dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAccountName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/cicrle_imageview_profile"
+            app:layout_constraintBottom_toTopOf="@id/view_account"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_margin="15dp">
+            <TextView
+                android:id="@+id/user_account_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Anise"
+                android:textAlignment="viewEnd"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:paddingEnd="5dp"
+                android:visibility="gone"
+                android:layout_marginBottom="10dp"/>
+
+            <ImageButton
+                android:id="@+id/imgbtn_account_profile_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@color/transparent"
+                android:src="@drawable/ic_settings"
+                android:layout_marginBottom="10dp"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/view_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutAccountName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:background="@color/custom_gray"
+            />
+
+        <LinearLayout
+            android:id="@+id/linearLayoutPromo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            app:layout_constraintTop_toTopOf="@id/view_account"
+            android:background="@color/white">
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:id="@+id/tv_promo_code"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <TextView
+                    android:id="@+id/tv_promo_code_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_promo_code"
+                    android:text="@string/promo_code"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="24dp"
+                android:background="@color/colorPrimary"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="10dp"
+                />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:id="@+id/tv_traveler"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_traveler"
+                    android:text="@string/traveler"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="24dp"
+                android:background="@color/colorPrimary"
+                android:layout_gravity="bottom"
+                android:layout_marginHorizontal="10dp"
+                />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                >
+                <TextView
+                    android:id="@+id/tv_points"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0"
+                    android:layout_centerHorizontal="true"
+                    />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_points"
+                    android:text="@string/points"
+                    android:layout_centerHorizontal="true"
+                    />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutEarnTravelCredits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutPromo"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_giftcard"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/earn_travel_credits"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutGrabAndScore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="1dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutEarnTravelCredits">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_score"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/grab_and_scrore"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutFAQ"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="1dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutGrabAndScore">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_faq"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/faq"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutFeedback"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="1dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutFAQ">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_feedback_satisfied"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/give_us_feedback"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutAboutUs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutFeedback">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_about_us"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/about_us"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayoutSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="10dp"
+            android:layout_marginTop="20dp"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@color/white"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutAboutUs">
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_settings"
+                android:tint="?attr/colorControlNormal"
+                android:layout_marginEnd="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:text="@string/settings"
+                />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_arrow_forward"
+                />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_app_version"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/linearLayoutSetting"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="V 1.0"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/semi_gray"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

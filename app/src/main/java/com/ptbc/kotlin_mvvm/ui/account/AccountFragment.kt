@@ -1,25 +1,22 @@
-package com.ptbc.kotlin_mvvm.ui.home
+package com.ptbc.kotlin_mvvm.ui.account
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.ptbc.kotlin_mvvm.R
 
-class CartFragment : Fragment() {
+class AccountFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
 
-        var view : View = inflater.inflate(R.layout.activity_empty, container, false)
+        var view : View = inflater.inflate(R.layout.fragment_account, container, false)
 
         return view
     }
 
     companion object {
-        fun newInstance() = CartFragment()
+        fun newInstance() = AccountFragment()
     }
 }

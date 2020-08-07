@@ -85,7 +85,7 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>(),
 //            supportActionBar!!.setDisplayShowHomeEnabled(true)
 //        }
 
-        mPagerAdapter.count = 2
+        mPagerAdapter.count = 3
 
         mActivityFeedBinding?.feedViewPager?.adapter = mPagerAdapter
 
@@ -97,6 +97,12 @@ class FeedActivity : BaseActivity<ActivityFeedBinding, FeedViewModel>(),
         mActivityFeedBinding?.tabLayout?.addTab(
             mActivityFeedBinding?.tabLayout!!.newTab().setText(
                 getString(R.string.search)
+            )
+        )
+
+        mActivityFeedBinding?.tabLayout?.addTab(
+            mActivityFeedBinding?.tabLayout!!.newTab().setText(
+                getString(R.string.account)
             )
         )
 
